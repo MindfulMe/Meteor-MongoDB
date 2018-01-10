@@ -1,15 +1,18 @@
 import { Template } from 'meteor/templating';
-import { ReactiveVar } from 'meteor/reactive-var';
+import { Notes } from '../lib/collections.js';
 
 import './main.html';
 
-Tasks = new Mongo.Collection('tasks');
+Template.body.helpers({
+	/*notes:[{text:'My Note 1'},{text:'My Note 2'},{text:'My Note 3'}]*/
 
-	Template.tasks.helpers({
-		tasks: function(){
-			return Tasks.find({}, {sort: {createdAt: -1}});
-		}
-	});
+	notes()
+	{
+		return Notes.find({});
+	}
+});
+
+
 
 
 
